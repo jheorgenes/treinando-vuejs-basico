@@ -14,8 +14,11 @@
 <body>
   <div id="app">
     <div v-html="elementosHTML">
-      <!-- Tudo que tiver dentro do elemento será substituído pelo binding do (v-html) diretiva  -->
       Texto de <b>exemplo</b>
+    </div>
+    <br>
+    <div v-text="elementosHTML"><!-- v-text funciona igual o v-html, porém injeta no em formato de texto -->
+     Texto de exemplo <!-- O v-text também tem o comportamento de substituir o texto previamente existente dentro do elemento -->
     </div>
   </div>
 
