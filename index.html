@@ -14,11 +14,32 @@
 <body>
   <div id="app">
     <ul>
-      <!-- Coloca-se a diretiva v-for normalmente no ELEMENTO que será repetido -->
-      <!-- v-for pode receber a unidade da lista e também pode receber a unidade e o índice dessa lista -->
-      <!-- A variável utilizada como unidade da lista pode ser acessada por outras diretivas -->
       <li v-for="(curso, key) in cursos">{{ key }} - {{ curso }}</li>
     </ul>
+    <hr>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Utilizando a forma normal do v-for -->
+        <!-- <tr v-for="(curso, key) in cursos2">
+          <td>{{ key }}</td>
+          <td>{{ curso.titulo }}</td>
+          <td>{{ curso.descricao }}</td>
+        </tr> -->
+        <!-- Utilizando v-for com destructuring assignment (trazendo apenas propriedades selecionadas) -->
+        <tr v-for="({ titulo, descricao }, key) in cursos2">
+          <td>{{ key }}</td>
+          <td>{{ titulo }}</td>
+          <td>{{ descricao }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>
@@ -26,11 +47,19 @@
     const vm = new Vue({
       el: '#app',
       data: {
-        cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'Solid', 'Angular']
+        cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'Solid', 'Angular'],
+        cursos2: {
+          1000: { 
+            titulo: 'Laravel', 
+            descricao: 'Domine o framework PHP mais poderoso do mundo' 
+          },
+          1001: {
+            titulo: 'Banco de Dados',
+            descricao: 'Aprenda os principais BDs relacionais do mercado'
+          }
+        }
       },
-      methods: {
-        
-      }
+      methods: {}
     })
 
   </script>
